@@ -385,7 +385,26 @@ a:hover{
 
 .last-projects .img-project {
 	height: 200px;
+	position: relative;
 }
+
+.last-projects .img-project span.catName {
+	position: absolute;
+	left: 0;
+	top:0;
+	height: 30px;
+	min-width: 100px;
+	padding: 0 15px;
+	text-align: center;
+	display: block;
+	color:#fff;
+	background-color: #FEB41C;
+	line-height: 30px;
+	font-size: 12px;
+}
+.last-projects .img-project span.catName i{
+	margin-right:6px;
+} 
 
 /* CREATE PROJET */
 .daterangepicker .calendar {
