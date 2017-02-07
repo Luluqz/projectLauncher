@@ -19,6 +19,7 @@ Route::auth();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::resource('/home', 'HomeController');
 
 Route::get('/home/project/{project_id}','ProjectDetailsController@index');
 

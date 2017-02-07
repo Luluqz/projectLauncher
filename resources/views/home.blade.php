@@ -24,14 +24,12 @@
 
         <div class="col-md-2">
             <div class="dots-container">
-                <i class="fa fa-superpowers" aria-hidden="true"></i><h4>TOP PROJECT</h4>
+                <i class="fa fa-superpowers" aria-hidden="true"></i><h4>TOP PROJETS</h4>
             </div>
         </div>
 
         <div class="col-md-10">
             <div class="catSlider">
-
-
 
                     @foreach ($topHome as $k => $v)
                     <div class="catSliderContent" data-thumb="{{ $categories[$k]->name }}">
@@ -79,61 +77,79 @@
         </div>
     </div>
 
-<!--     <div class="row">
-        <div class="col-md-12">
-            @foreach ($categories as $key => $cat)
-                <a href="home/category/{{ $cat->id }}" data-thumb="{{ $cat->name }}"> {{ $cat->name }} </a> <br>
-            @endforeach
-        </div>
-    </div> -->
 </div>
 <div class="container">
-    <div class="row last-projects">
+
+    <hr>
+
+    <div class="row titre-last-projects">
+        <div class="col-md-12">
+            <h4><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>DERNIERS PROJETS</span></h4>
+        </div>
+    </div>
+<!--     <div class="row last-projects">
         @foreach ($projects as $key => $project)
             <div class="col-md-4 col-sm-2">
-                <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')">
-                    <span class="catName"><i class="fa fa-flag-o" aria-hidden="true"></i>{{ $category[$key]->name }}</span>
-                </div>
-                <div class="desc-project">
-                    <h6><span>{{ $project->title }}</span></h6>
-                    <div class="author">
-                        {{ $user[$key]->firstname }} {{ $user[$key]->name }}
+                <div class="shadow">
+                    <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')">
+                        <span class="catName"><i class="fa fa-flag-o" aria-hidden="true"></i>{{ $category[$key]->name }}</span>
                     </div>
-                    <p>{{ str_limit($project->description, 300) }}</p>
-                    <div class="prog">
-                        <div class="amount">
-                        PROGRESS : {{ $currentAmount[$key] }} / {{ $project->project_cost }}
-                            <div class="currentAmount">
-                                {{ $perc[$key] }}
+                    <div class="desc-project">
+                        <h6><span>{{ str_limit($project->title, 40) }}</span></h6>
+                        <div class="author">
+                            <i class="fa fa-user" aria-hidden="true"></i> {{ $user[$key]->firstname }} {{ $user[$key]->name }}
+                        </div>
+                        <p>{{ str_limit($project->description, 220) }}</p>
+                        <div class="prog">
+                            <div class="amount">
+                                <span>{{ number_format($perc[$key],0) }}%</span>
+                                <div class="currentAmount" style="width:{{ $perc[$key] }}%;">
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
-    </div>
-</div>
-
-<!--     <div class="row">
-        @foreach ($projects as $key => $project)
-        <div class="col-md-4" style='margin-bottom:20px;'>
-            <div class="border" style="border:1px solid #e7e7e7; padding:15px;">
-                ID : {{ $project->id }} <br>
-                TITLE : {{ $project->title }} <br>
-                CATEGORY : {{ $category[$key]->name }} <br> 
-                CREATOR : {{ $user[$key]->name }} <br> 
-                PROGRESS : {{ $currentAmount[$key] }} / {{ $project->project_cost }}<br>
-                DETAILS : <a href="home/project/{{ $project->id }}">See project</a>
-            </div>
-        </div>
-        @endforeach
     </div> -->
+     
+
+    <div class="last-projects row">@include('load')</div>
+    
+</div>
 
 </div>
 @endsection
 
 @push('js-stack')
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>@endpush
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    $('body').on('click', '.pagination a', function(e) {
+        e.preventDefault();
+        console.log('click');
+
+        var url = $(this).attr('href');  
+        getProjects(url);
+        window.history.pushState("", "", url);
+    });
+
+    function getProjects(url) {
+        $.ajax({
+            url : url  
+        }).done(function (data) {
+            $('.last-projects').html(data);  
+        }).fail(function () {
+            alert('Articles could not be loaded.');
+        });
+
+    }
+});
+
+</script>
+@endpush
 
 @push('css-stack')
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>

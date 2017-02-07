@@ -98,6 +98,13 @@ class HomeController extends Controller
                 //dd($daysLeft[$key]);
             }       
         }
+
+        if ($request->ajax()) {
+            return view('load', ['projects' => $listProject, 
+                                 'user' => $user,
+                                 'category' => $category,
+                                 'perc' => $perc ])->render();  
+        }
         
         return view('home', [
             'projects' => $listProject,

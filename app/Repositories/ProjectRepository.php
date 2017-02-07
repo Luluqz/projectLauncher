@@ -11,7 +11,7 @@ class ProjectRepository
 
     public function getAllProjects()
 	{
-        return Project::orderBy('id','desc')->get();
+        return Project::orderBy('id','desc')->Paginate(6);
     }
     
     public function getProject($project_id){
