@@ -9,9 +9,13 @@ use App\Category;
 class ProjectRepository
 {
 
-    public function getAllProjects()
+    public function getAllProjectsPagi()
 	{
         return Project::orderBy('id','desc')->Paginate(6);
+    }
+
+    public function getAllProjects(){
+        return Project::inRandomOrder()->all();
     }
     
     public function getProject($project_id){

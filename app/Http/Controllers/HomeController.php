@@ -38,7 +38,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         
-        $listProject = $this->project->getAllProjects();
+        $listProject = $this->project->getAllProjectsPagi();
         $categories = $this->category->getAllCategories();
         
         foreach($listProject as $key => $project){
@@ -126,13 +126,35 @@ class HomeController extends Controller
     {
 
         $listProject = $this->project->getProjectsFromCategory($category_id);
-        $topProjects = $this->project->getTopProjectsFromCategory($category_id);
+        //$topProjects = $this->project->getTopProjectsFromCategory($category_id);
         $top1 = $this->project->getRandomTopProjectFromCategory($category_id);
+
+        foreach($listProject as $key => $project){
+             // get creator of project
+             $user[$key] = $this->user->getCreator($project->creator_id);
+
+             // get currentAmount
+             $currentAmount[$key] = $this->contract->getCurrentAmount($project->id);
+
+             //get percentage
+            if(!is_null($currentAmount[$key])){
+                if($project->project_cost > $currentAmount[$key]){
+                    $perc[$key] = ($currentAmount[$key] / $project->project_cost)*100;
+                }else{
+                    $perc[$key] = 100;
+                }
+            }else{
+                $perc[$key] = 0;
+            }
+        }
 
         return view('category', [
             'projects' => $listProject,
-            'topProjects' => $topProjects,
+            //'topProjects' => $topProjects,
             'top1' => $top1,
+            'user' => $user,
+            'currentAmount' => $currentAmount,
+            'perc' => $perc,
             ]);
     }
 }
