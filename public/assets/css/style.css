@@ -390,7 +390,7 @@ a:hover{
 /* latests projects */
 
 .last-projects .img-project {
-	height: 200px;
+	height: 160px;
 	position: relative;
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
@@ -437,6 +437,7 @@ a:hover{
 	padding-bottom: 4px;
 	border-bottom: 1px solid #FEB41C;
 } 
+
 .last-projects .desc-project h6 {
 	text-align: center;
 	margin-bottom: 15px;
@@ -454,9 +455,11 @@ a:hover{
 	margin-bottom: 20px;
 } 
 .last-projects .desc-project p {
-	padding: 0px 15px 10px 15px;
+	padding: 0px 15px 0px 15px;
 	text-align: center;
 	font-weight: 300;
+	margin-bottom: 0;
+	height: 80px;
 }
 
 .last-projects .prog {

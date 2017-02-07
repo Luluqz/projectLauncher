@@ -15,25 +15,25 @@ $(document).ready(function() {
         $(".image-preview-input-title").text("Browse"); 
     }); 
 
-    $('.homeSlider').slick({
-        prevArrow : '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        nextArrow : '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-    });
+    // $('.homeSlider').slick({
+    //     prevArrow : '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+    //     nextArrow : '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+    // });
 
-    $('.catSlider').slick({
-        dots: true,
-        appendDots: $(".dots-container"),
-        vertical: true,
-        arrows:false,
-        customPaging : function(slider, i) {
-            var thumb = $(slider.$slides[i]).data('thumb');  
-            return '<a>'+thumb+'</a>';
-        },
-    });
+    // $('.catSlider').slick({
+    //     dots: true,
+    //     appendDots: $(".dots-container"),
+    //     vertical: true,
+    //     arrows:false,
+    //     customPaging : function(slider, i) {
+    //         var thumb = $(slider.$slides[i]).data('thumb');  
+    //         return '<a>'+thumb+'</a>';
+    //     },
+    // });
 
-    $('.dots-container li').on('click', function(){
-        $('.dots-container li').removeClass('active');
-        $(this).addClass('active');
-    });
+    // $('.dots-container li').on('click', function(){
+    //     $('.dots-container li').removeClass('active');
+    //     $(this).addClass('active');
+    // });
 });
 

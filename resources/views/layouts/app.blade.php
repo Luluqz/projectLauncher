@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar  -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Découvrir</a></li>
+                    <li><a href="#last-projects">Découvrir</a></li>
                     <li><a href="{{ url('/home/create') }}">Démarrer un projet</a></li>
                 </ul>
 
@@ -78,6 +78,16 @@
     </nav>
 
     @yield('content')
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </footer>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>

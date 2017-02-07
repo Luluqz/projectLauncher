@@ -10,7 +10,7 @@
                 <div class="author">
                     <i class="fa fa-user" aria-hidden="true"></i> {{ $user[$key]->firstname }} {{ $user[$key]->name }}
                 </div>
-                <p>{{ str_limit($project->description, 220) }}</p>
+                <p>{{ str_limit($project->description, 150) }}</p>
                 <div class="prog">
                     <div class="amount">
                         <span>{{ number_format($perc[$key],0) }}%</span>

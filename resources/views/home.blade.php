@@ -82,38 +82,11 @@
 
     <hr>
 
-    <div class="row titre-last-projects">
+    <div class="row titre-last-projects" id="last-projects">
         <div class="col-md-12">
             <h4><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>DERNIERS PROJETS</span></h4>
         </div>
-    </div>
-<!--     <div class="row last-projects">
-        @foreach ($projects as $key => $project)
-            <div class="col-md-4 col-sm-2">
-                <div class="shadow">
-                    <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')">
-                        <span class="catName"><i class="fa fa-flag-o" aria-hidden="true"></i>{{ $category[$key]->name }}</span>
-                    </div>
-                    <div class="desc-project">
-                        <h6><span>{{ str_limit($project->title, 40) }}</span></h6>
-                        <div class="author">
-                            <i class="fa fa-user" aria-hidden="true"></i> {{ $user[$key]->firstname }} {{ $user[$key]->name }}
-                        </div>
-                        <p>{{ str_limit($project->description, 220) }}</p>
-                        <div class="prog">
-                            <div class="amount">
-                                <span>{{ number_format($perc[$key],0) }}%</span>
-                                <div class="currentAmount" style="width:{{ $perc[$key] }}%;">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div> -->
-     
+    </div>     
 
     <div class="last-projects row">@include('load')</div>
     
@@ -124,6 +97,30 @@
 
 @push('js-stack')
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.homeSlider').slick({
+        prevArrow : '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+        nextArrow : '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+    });
+
+    $('.catSlider').slick({
+        dots: true,
+        appendDots: $(".dots-container"),
+        vertical: true,
+        arrows:false,
+        customPaging : function(slider, i) {
+            var thumb = $(slider.$slides[i]).data('thumb');  
+            return '<a>'+thumb+'</a>';
+        },
+    });
+
+    $('.dots-container li').on('click', function(){
+        $('.dots-container li').removeClass('active');
+        $(this).addClass('active');
+    });
+});
+</script>
 <script type="text/javascript">
 
 $(function() {
