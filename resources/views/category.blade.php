@@ -3,34 +3,43 @@
 @section('content')
 <div class="container category">
 
+    <div class="row cat-list">
+      <div class="col-md-12">
+        <ul>
+          @foreach ($categories as $cat)
+          <li>
+            <a href="" class=" @if($cat->id == $top1->category_id) active @endif ">
+              {{ $cat->name }}
+            </a>
+          </li>
+          @endforeach
+        </ul>
+      </div>
+    </div>
+
     <h2><span>{{ $category->name }}</span></h2>
 
         @if (count($top1) > 0)
         <div class="row rowtop">
             <div class="shadow">
                 <div class="col-md-6">
-                    <h4><i class="fa fa-superpowers" aria-hidden="true"></i> <span>Project name</span></h4>
-                    <div class="author">par <i class="fa fa-user" aria-hidden="true"></i> Project author</div>
+                    <h4><i class="fa fa-superpowers" aria-hidden="true"></i> <span>{{ $top1->title }}</span></h4>
+                    <div class="author">par <i class="fa fa-user" aria-hidden="true"></i> {{ $user1->firstname }} {{ $user1->name }} </div>
                     <div class="desc">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      {{ str_limit($top1->description, 450)}}
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="c100 p72 yellow">
-                              <span>25%</span>
+                            <div class="c100 p{{ number_format($perc1,0) }} yellow">
+                              <span>{{ number_format($perc1,0) }}%</span>
                               <div class="slice">
                                 <div class="bar"></div>
                                 <div class="fill"></div>
                               </div>
                             </div>
                         </div>
-                        <div class="col-md-4 stats"><i class="fa fa-eur" aria-hidden="true"></i> Fonds récoltés<br><strong>23222€</strong></div>
-                        <div class="col-md-4 stats"><i class="fa fa-handshake-o" aria-hidden="true"></i> Financements<br><strong>8</strong></div>
+                        <div class="col-md-4 stats"><i class="fa fa-eur" aria-hidden="true"></i> Fonds récoltés<br><strong>{{ $currentAmount1 }}€</strong></div>
+                        <div class="col-md-4 stats"><i class="fa fa-calendar" aria-hidden="true"></i> Jours restants<br><strong>{{ $daysLeft1 }}</strong></div>
                         <!-- <div class="col-md-3"><a href="">Voir le projet</a></div> -->
                     </div>
                     <div class="row link">
@@ -67,6 +76,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="link"><a href="">Voir le projet</a></div>
                     </div>
                 </div>
             </div>

@@ -579,6 +579,7 @@ a:hover{
 	font-weight: bold;
 }
 
+.category .last-projects .link a,
 .category .rowtop .link a {
 	background-color: #FEB41C;
 	color:#fff;
@@ -590,6 +591,14 @@ a:hover{
 	width: 160px;
 	text-align: center;
 	margin-top: 25px;
+}
+
+body .category .last-projects .link a{
+	margin-top: 5px;
+} 
+
+.category .last-projects .link {
+	padding-bottom: 15px;
 }
 
 /*circle*/
@@ -615,6 +624,46 @@ a:hover{
 
 body .category .last-projects .img-project {
 	height: 230px;
+}
+
+/*.category .cat-list ul {
+	text-align: justify;
+}
+
+.category .cat-list ul:after {
+	content: '';
+	display: inline-block;
+	width: 100%;
+}
+.category .cat-list ul:before {
+	content: '';
+	display: block;
+	margin-top: -1.25em;
+}
+
+.category .cat-list li {
+	display: inline-block;
+	margin-right: -.25em;
+	position: relative
+	top:1.25em;
+}*/
+
+.category .cat-list ul {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: nowrap;
+}
+
+.category .cat-list li a {
+	display: block;
+	padding: 10px 15px;
+	font-size: 18px;
+} 
+
+.category .cat-list li a.active {
+	font-weight: bold;
+	font-size: 32px;
+	text-transform: uppercase;
 }
 
 /* CREATE PROJET */
