@@ -126,7 +126,7 @@ class HomeController extends Controller
     {
 
         $listProject = $this->project->getProjectsFromCategory($category_id);
-        //$topProjects = $this->project->getTopProjectsFromCategory($category_id);
+        $category = $this->category->getCategory($category_id);
         $top1 = $this->project->getRandomTopProjectFromCategory($category_id);
 
         foreach($listProject as $key => $project){
@@ -150,7 +150,7 @@ class HomeController extends Controller
 
         return view('category', [
             'projects' => $listProject,
-            //'topProjects' => $topProjects,
+            'category' => $category,
             'top1' => $top1,
             'user' => $user,
             'currentAmount' => $currentAmount,

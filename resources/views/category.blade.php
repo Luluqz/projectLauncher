@@ -3,15 +3,50 @@
 @section('content')
 <div class="container category">
 
+    <h2><span>{{ $category->name }}</span></h2>
+
         @if (count($top1) > 0)
         <div class="row rowtop">
-            <div class="col-md-12" style="border:1px solid #e7e7e7; padding:15px;">
-                TOP 1 : {{ $top1->id }} <br>
+            <div class="shadow">
+                <div class="col-md-6">
+                    <h4><i class="fa fa-superpowers" aria-hidden="true"></i> <span>Project name</span></h4>
+                    <div class="author">par <i class="fa fa-user" aria-hidden="true"></i> Project author</div>
+                    <div class="desc">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="c100 p72 yellow">
+                              <span>25%</span>
+                              <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 stats"><i class="fa fa-eur" aria-hidden="true"></i> Fonds récoltés<br><strong>23222€</strong></div>
+                        <div class="col-md-4 stats"><i class="fa fa-handshake-o" aria-hidden="true"></i> Financements<br><strong>8</strong></div>
+                        <!-- <div class="col-md-3"><a href="">Voir le projet</a></div> -->
+                    </div>
+                    <div class="row link">
+                        <div class="col-md-12">
+                            <a href="">Voir le projet</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="background-image:url('http://lorempixel.com/900/700/')">
+                    <div class="img-project"></div>
+                </div>
             </div>
         </div>
         @endif
 
-        <div class="last-projects">
+        <div class="row last-projects">
         @foreach ($projects as $key => $project)
             <div class="col-md-6 col-sm-2">
                 <div class="shadow">
@@ -38,11 +73,6 @@
         @endforeach
         </div>
 
-        <div class="sort">
-            SORTING <br>
-            <a href="#sortBy=id" data-sortBy="id" class="">id</a>
-        </div>
-
         <div class="row all">
             @if (count($projects) > 0)
                 @foreach ($projects as $key => $project)                
@@ -59,4 +89,8 @@
 
 @push('js-stack')
 
+@endpush
+
+@push('css-stack')
+<link href="{{ URL::asset('assets/css/circle.css') }}" type='text/css' rel="stylesheet">
 @endpush
