@@ -618,54 +618,69 @@ body .category .last-projects .link a{
 .c100.yellow:after {
   background-color: #fff;
 }
-/*.c100.yellow:hover > span {
-  color: #363F45;
-}*/
+
+/*select*/
+.category div.cs-select {
+	display: block;
+	margin: 0 auto;
+	border-bottom: 1px solid #FEB41C;
+}
+.cs-skin-underline .cs-options li span:hover {
+	background-color: #FEB41C;
+	color: #fff;
+}
+.cs-skin-underline ul li:last-child span::before {
+	display: none;
+}
 
 body .category .last-projects .img-project {
 	height: 230px;
 }
 
-/*.category .cat-list ul {
-	text-align: justify;
+/*ribon*/
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
 }
-
-.category .cat-list ul:after {
-	content: '';
-	display: inline-block;
-	width: 100%;
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#FEB41C 0%, #FEB41C 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
 }
-.category .cat-list ul:before {
-	content: '';
-	display: block;
-	margin-top: -1.25em;
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #FEB41C;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #FEB41C;
 }
-
-.category .cat-list li {
-	display: inline-block;
-	margin-right: -.25em;
-	position: relative
-	top:1.25em;
-}*/
-
-.category .cat-list ul {
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: nowrap;
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #FEB41C;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #FEB41C;
 }
-
-.category .cat-list li a {
-	display: block;
-	padding: 10px 15px;
-	font-size: 18px;
-} 
-
-.category .cat-list li a.active {
-	font-weight: bold;
-	font-size: 32px;
-	text-transform: uppercase;
-}
-
 /* CREATE PROJET */
 .daterangepicker .calendar {
 	display: none !important;

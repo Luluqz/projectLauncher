@@ -4,20 +4,16 @@
 <div class="container category">
 
     <div class="row cat-list">
-      <div class="col-md-12">
-        <ul>
+      <div class="col-md-12" style="padding-bottom:55px;">
+        <select class="cs-select cs-skin-underline">
           @foreach ($categories as $cat)
-          <li>
-            <a href="" class=" @if($cat->id == $top1->category_id) active @endif ">
-              {{ $cat->name }}
-            </a>
-          </li>
+              <option value="{{ $cat->id }}" data-link="{{ $cat->id }}">
+                  {{ $cat->name }}
+              </option>
           @endforeach
-        </ul>
+        </select>
       </div>
     </div>
-
-    <h2><span>{{ $category->name }}</span></h2>
 
         @if (count($top1) > 0)
         <div class="row rowtop">
@@ -49,7 +45,9 @@
                     </div>
                 </div>
                 <div class="col-md-6" style="background-image:url('http://lorempixel.com/900/700/')">
-                    <div class="img-project"></div>
+                    <div class="img-project">
+                        <div class="ribbon"><span>TOP</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,7 +58,9 @@
             <div class="col-md-6 col-sm-2">
                 <div class="shadow">
                     <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')">
-                        <span class="catName"><i class="fa fa-flag-o" aria-hidden="true"></i></span>
+                        @if ($project->toTop == 1)
+                            <div class="ribbon"><span>TOP</span></div>
+                        @endif
                     </div>
                     <div class="desc-project">
                         <h6><span>{{ str_limit($project->title, 40) }}</span></h6>
@@ -83,24 +83,26 @@
         @endforeach
         </div>
 
-        <div class="row all">
-            @if (count($projects) > 0)
-                @foreach ($projects as $key => $project)                
-                    <div class="col-md-6 grid-item" style="border:1px solid #e7e7e7; padding:15px;">
-                        <span class="id">{{ $project->id }} </span> <br>
-                        <span class="top">TOP : {{ $project->toTop }}</span>
-                    </div>
-                @endforeach
-            @endif
-        </div>
     </div>
 </div>
 @endsection
 
 @push('js-stack')
-
+<script src="{{ URL::asset('assets/js/classie.js') }}"></script>
+<script src="{{ URL::asset('assets/js/selectFx.js') }}"></script>
+<script>
+    (function() {
+        [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {    
+            new SelectFx(el);
+        } );
+    })();
+</script>
+<script type="text/javascript">
+    $('.cs-placeholder').html('{{ $category->name }}');
+</script>
 @endpush
 
 @push('css-stack')
 <link href="{{ URL::asset('assets/css/circle.css') }}" type='text/css' rel="stylesheet">
+<link href="{{ URL::asset('assets/css/select.css') }}" type='text/css' rel="stylesheet">
 @endpush
