@@ -55,6 +55,9 @@ class ProjectDetailsController extends Controller
         foreach($listContract as $key => $contract){
              // get investors id
              $investors[$key] = $this->contract->getInvestors($contract->investor_id);
+
+             //get financement
+             //$financement[$key] = $this->contract->getAmount()
         }
 
         //days left
@@ -81,6 +84,7 @@ class ProjectDetailsController extends Controller
             'daysLeft' => $daysLeft,
             'perc' => $perc,
             'financements' => $totalContracts,
+            'listContracts' => $listContract,
             ]);
     }
 }

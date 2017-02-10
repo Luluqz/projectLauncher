@@ -51,22 +51,53 @@
         <div class="col-md-12">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs row" role="tablist">
-                <li role="presentation" class="active col-md-3"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                <li role="presentation" class="col-md-3"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                <li role="presentation" class="col-md-3"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                <li role="presentation" class="col-md-3"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                <li role="presentation" class="active col-md-3"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab"><i class="fa fa-info-circle" aria-hidden="true"></i> description</a></li>
+                <li role="presentation" class="col-md-3"><a href="#financements" aria-controls="financements" role="tab" data-toggle="tab"><i class="fa fa-handshake-o" aria-hidden="true"></i> financements</a></li>
+                <li role="presentation" class="col-md-3"><a href="#commentaires" aria-controls="commentaires" role="tab" data-toggle="tab"><i class="fa fa-comments-o" aria-hidden="true"></i> commentaires</a></li>
+                <li role="presentation" class="col-md-3"><a href="#social-media" aria-controls="social-media" role="tab" data-toggle="tab"><i class="fa fa-facebook-official" aria-hidden="true"></i> <i class="fa fa-google-plus" aria-hidden="true"></i> <i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="home">zefzefzef</div>
-                <div role="tabpanel" class="tab-pane" id="profile">...</div>
-                <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                <div role="tabpanel" class="tab-pane" id="settings">...</div>
+                <div role="tabpanel" class="tab-pane active" id="presentation">
+                    <h4><span> {{ $project->title }} </span></h4>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')"></div>
+                            <div class="desc">
+                                {{ $project->description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="financements">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Prénom / Nom</th>
+                                    <th>Montant</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="commentaires">...</div>
+                <div role="tabpanel" class="tab-pane" id="social-media">...</div>
             </div>
         </div>
     </div>
 </div>
+
+{{ $listContracts }} <br><br>
+
+@foreach ($listContracts as $key => $contract)
+    {{ $contract->amount }} // 
+         @foreach ($investors as $k => $investor)
+            Nom : {{ $investor[0]->name }} / ID :  {{ $investor[0]->id }}  <br>
+         @endforeach
+     <br>
+@endforeach
 
 <div class="container-fluid">
     <div class="row">

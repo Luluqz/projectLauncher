@@ -790,6 +790,74 @@ body .category .last-projects .img-project {
 	background-position: center center;
 }
 
+.project-details .onglets {
+	margin-top: 35px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.project-details .onglets .nav {
+	border-bottom: none;
+	padding-bottom: 35px;
+}
+
+.project-details .onglets li {
+	padding-left: 0;
+	padding-right: 0;
+	border-right:1px solid rgba(94, 124, 136, .2);
+	border-top: 1px solid rgba(94, 124, 136, .2);
+	margin-bottom: 0;
+}
+
+.project-details .onglets li:last-child {
+	border:none;
+	border-top: 1px solid rgba(94, 124, 136, .2);
+}
+
+.project-details .onglets li.active {
+	border:none;
+	border-top: 1px solid #FEB41C;
+}
+
+.project-details .onglets li a {
+	border-radius: 0;
+	text-align: center;
+	border:none;
+	margin-right: 0;
+	text-transform: uppercase;
+	color: #363F45;
+}
+
+.project-details .onglets li a i {
+	margin-right: 4px;
+}
+
+.project-details .onglets li:last-child a i {
+	font-size: 20px;
+	margin: 0 15px;
+}
+
+.project-details .onglets li.active a {
+	background-color: #FEB41C;
+	color:#fff;
+	border: none;
+}
+.project-details .onglets li.active a:hover {
+	border: none;
+}
+
+.project-details .onglets h4 {
+	text-align: center;
+}
+
+.project-details .onglets .desc {
+	padding: 40px 0;
+	font-weight: 300;
+	border-bottom: 1px solid #FEB41C;
+	text-align: justify;
+	line-height: 23px;
+}
+
 /* CREATE PROJET */
 .daterangepicker .calendar {
 	display: none !important;
