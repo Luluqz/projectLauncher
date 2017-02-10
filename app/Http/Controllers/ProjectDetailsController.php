@@ -57,10 +57,19 @@ class ProjectDetailsController extends Controller
              $investors[$key] = $this->contract->getInvestors($contract->investor_id);
         }
 
-        // foreach($investors_id as $key => $investor_id){
-        //     // get investors names
-        //     $investor_name[$key] = $this->contract->getInvestors($investor_id);
-        // }
+        //days left
+        $daysLeft = $project->project_endline->diffInDays($project->created_at);
+
+        //pourcentage
+        if($project->project_cost > $currentAmount){
+            $perc = ($currentAmount / $project->project_cost)*100;
+        }else{
+            $perc = 100;
+        }
+
+        //financements
+        $totalContracts = $this->contract->getTotalContracts($project->id);
+
         
         return view('projectDetails', [
             'project' => $project,
@@ -68,8 +77,10 @@ class ProjectDetailsController extends Controller
             'category' => $category,
             'currentAmount' => $currentAmount,
             'investors' => $investors,
-            //'investors_id' => $investors_id,
-            'contracts' => $listContract
+            'contracts' => $listContract,
+            'daysLeft' => $daysLeft,
+            'perc' => $perc,
+            'financements' => $totalContracts,
             ]);
     }
 }

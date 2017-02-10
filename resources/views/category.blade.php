@@ -40,7 +40,7 @@
                     </div>
                     <div class="row link">
                         <div class="col-md-12">
-                            <a href="">Voir le projet</a>
+                            {!! link_to_route('projectdetails', 'Voir le projet', ['id' => $top1->id]) !!}
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="link"><a href="">Voir le projet</a></div>
+                        <div class="link">{!! link_to_route('projectdetails', 'Voir le projet', ['id' => $project->id]) !!}</div>
                     </div>
                 </div>
             </div>

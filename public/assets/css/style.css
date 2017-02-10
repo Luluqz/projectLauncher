@@ -681,6 +681,115 @@ body .category .last-projects .img-project {
   border-bottom: 3px solid transparent;
   border-top: 3px solid #FEB41C;
 }
+
+/* PROJECT DETAILS */
+
+.project-details h1 {
+	font-size: 24px;
+}
+
+.project-details h1 span {
+	padding-bottom: 4px;
+	border-bottom: 1px solid #FEB41C;
+} 
+
+.project-details .author {
+	font-size: 18px;
+	margin-bottom: 40px;
+}
+.project-details .author i {
+	margin-right: 4px;
+} 
+
+.project-details .stats {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.project-details .stats i {
+	margin-right: 4px;
+	color: #FEB41C;
+}
+
+.project-details .prog {
+	height: 55px;
+	padding: 20px 0px;
+}
+
+.project-details .prog .amount {
+	height: 15px;
+	border-radius: 8px;
+	background-color: #5E7C88;
+	position: relative;
+	color:#fff;
+	overflow: hidden;
+	text-align: center;
+} 
+
+.project-details .prog .amount .currentAmount {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 15px;
+	border-radius: 8px;
+	background-color: #FEB41C;
+	color:#fff;
+	z-index: 10;
+}
+
+.project-details .prog .amount span {
+	position: relative;
+	z-index: 20;
+	display: block;
+	text-align: center;
+	font-size: 13px;
+	line-height: 16px;
+}
+
+.project-details .link a {
+    display: block;
+    margin: 0 auto;
+    background-color: #FEB41C;
+    color: #fff;
+    width: 80%;
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 7px;
+}
+
+.project-details .visuel {
+	padding-top: 15px;
+}
+
+.project-details h4 {
+	text-align: right;
+	font-size: 22px;
+	font-weight: 500;
+	padding-bottom: 20px;
+}
+
+.project-details h4 span {
+	padding-bottom: 4px;
+	border-bottom: 1px solid #FEB41C;
+}
+
+.project-details p {
+	text-align: right;
+	font-size: 16px;
+	letter-spacing: 1px;
+	font-weight: 300;
+}
+
+.project-details .img-project {
+	height: 350px;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 /* CREATE PROJET */
 .daterangepicker .calendar {
 	display: none !important;

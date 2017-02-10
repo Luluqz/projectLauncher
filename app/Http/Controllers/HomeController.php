@@ -128,15 +128,25 @@ class HomeController extends Controller
         $listProject = $this->project->getProjectsFromCategory($category_id);
         $category = $this->category->getCategory($category_id);
         $top1 = $this->project->getRandomTopProjectFromCategory($category_id);
-        $user1 = $this->user->getCreator($top1->creator_id);
-        $currentAmount1 = $this->contract->getCurrentAmount($top1->id);
-        $daysLeft1 = $top1->project_endline->diffInDays($top1->created_at);
+        if(!is_null($top1)){
+            $user1 = $this->user->getCreator($top1->creator_id);
+            $currentAmount1 = $this->contract->getCurrentAmount($top1->id);
+            $daysLeft1 = $top1->project_endline->diffInDays($top1->created_at);
+        }else{
+            $user1=0;
+            $currentAmount1=0;
+            $daysLeft1=0;
+        }
         $categories = $this->category->getAllCategories();
    
-        if($top1->project_cost > $currentAmount1){
-            $perc1 = ($currentAmount1 / $top1->project_cost)*100;
+        if(!is_null($top1)){
+            if($top1->project_cost > $currentAmount1){
+                $perc1 = ($currentAmount1 / $top1->project_cost)*100;
+            }else{
+                $perc1 = 100;
+            }
         }else{
-            $perc1 = 100;
+            $perc1 = 0;
         }
 
 

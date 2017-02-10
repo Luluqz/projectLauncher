@@ -21,7 +21,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::resource('/home', 'HomeController');
 
-Route::get('/home/project/{project_id}','ProjectDetailsController@index');
+Route::get('/home/project/{project_id}','ProjectDetailsController@index')->name('projectdetails');
 
 Route::post('/home/create/addProject', 'CreateController@addProject');
 Route::get('/home/create', 'CreateController@index');
