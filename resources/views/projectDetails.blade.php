@@ -54,7 +54,11 @@
                 <li role="presentation" class="active col-md-3"><a href="#presentation" aria-controls="presentation" role="tab" data-toggle="tab"><i class="fa fa-info-circle" aria-hidden="true"></i> description</a></li>
                 <li role="presentation" class="col-md-3"><a href="#financements" aria-controls="financements" role="tab" data-toggle="tab"><i class="fa fa-handshake-o" aria-hidden="true"></i> financements</a></li>
                 <li role="presentation" class="col-md-3"><a href="#commentaires" aria-controls="commentaires" role="tab" data-toggle="tab"><i class="fa fa-comments-o" aria-hidden="true"></i> commentaires</a></li>
-                <li role="presentation" class="col-md-3"><a href="#social-media" aria-controls="social-media" role="tab" data-toggle="tab"><i class="fa fa-facebook-official" aria-hidden="true"></i> <i class="fa fa-google-plus" aria-hidden="true"></i> <i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                <li role="" class="col-md-3 social-media">
+                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> </a>
+                    <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+                    <a href=""><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                </li>
             </ul>
 
             <!-- Tab panes -->
@@ -77,41 +81,37 @@
                                 <tr>
                                     <th>Prénom / Nom</th>
                                     <th>Montant</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($listContracts as $key => $contract)
+                                <tr>
+                                    <td>
+                                    @if ($contract->investor_id === $investors[$key]->id)
+                                        {{ $investors[$key]->firstname }} {{ $investors[$key]->name }}
+                                    @endif
+                                    </td>
+                                    <td>
+                                        {{ $contract->amount }} 
+                                    </td>
+                                    <td>
+                                        
+                                        {{ \Carbon\Carbon::setLocale('fr') }}
+                                        {{ $contract->created_at->diffForHumans() }} le {{ $contract->created_at->toFormattedDateString() }}
+
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="commentaires">...</div>
-                <div role="tabpanel" class="tab-pane" id="social-media">...</div>
+                <div role="" class="tab-pane" id="social-media">...</div>
             </div>
         </div>
     </div>
 </div>
 
-{{ $listContracts }} <br><br>
-
-@foreach ($listContracts as $key => $contract)
-    {{ $contract->amount }} // 
-         @foreach ($investors as $k => $investor)
-            Nom : {{ $investor[0]->name }} / ID :  {{ $investor[0]->id }}  <br>
-         @endforeach
-     <br>
-@endforeach
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12">
-            ID : {{ $project->id }} <br>
-            CREATOR : {{ $user->name }} {{ $user->firstname }}<br>
-            CATEGORY : {{ $category->name }} <br><br>
-            PROGRESS : {{ $currentAmount }} / {{ $project->project_cost }}  <br>
-            INVESTORS : 
-             @foreach ($investors as $key => $investor)
-                Nom : {{ $investor[0]->name }} / ID :  {{ $investor[0]->id }}  <br>
-             @endforeach
-
-        </div>
-    </div>
-</div>
 @endsection

@@ -33,7 +33,7 @@ class ContractRepository
     
     public function getInvestors($investor_id){
         return User::where('id', $investor_id)
-                ->get();
+                ->first();
     }
 
     public function getTotalContracts($project_id){

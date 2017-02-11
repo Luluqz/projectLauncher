@@ -858,6 +858,20 @@ body .category .last-projects .img-project {
 	line-height: 23px;
 }
 
+.project-details .onglets .social-media a {
+	display: block;
+	width: 33.33%;
+	text-align: center;
+	color: #FEB41C;
+	font-size: 20px;
+	float: left;
+} 
+
+.project-details .onglets .social-media a:hover {
+	background-color: #FEB41C;
+	color: #fff;
+}
+
 /* CREATE PROJET */
 .daterangepicker .calendar {
 	display: none !important;

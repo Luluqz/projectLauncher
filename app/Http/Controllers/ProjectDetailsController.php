@@ -51,14 +51,19 @@ class ProjectDetailsController extends Controller
         
         //get investors
         $listContract = $this->contract->getContracts($project_id);
-        $investors = [];
+
+       
         foreach($listContract as $key => $contract){
              // get investors id
              $investors[$key] = $this->contract->getInvestors($contract->investor_id);
 
-             //get financement
-             //$financement[$key] = $this->contract->getAmount()
+            // dd($investors[$key]);
+
+             //get investor
+             //$investor = $this->user->getInvestor($contract->investor_id);
         }
+
+        //dd($investors);
 
         //days left
         $daysLeft = $project->project_endline->diffInDays($project->created_at);

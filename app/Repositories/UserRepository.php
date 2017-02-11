@@ -13,4 +13,10 @@ class UserRepository
         return User::where('id', $creator_id)
                     ->first();
     }
+
+    public function getInvestor($investor_id)
+    {
+    	return User::where('id', $investor_id)
+    				->first();
+    }
 }
