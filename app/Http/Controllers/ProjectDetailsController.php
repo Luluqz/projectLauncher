@@ -13,6 +13,7 @@ use App\Repositories\ProjectRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ContractRepository;
+use Jenssegers\Date\Date;
 
 class ProjectDetailsController extends Controller
 {

@@ -20,6 +20,11 @@ a:hover{
 	text-decoration: none;
 }  
 
+.login input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	background-color: rgba(94, 124, 136, .2);
+	color: #FEB41C;
+}
+
 /* BUTTONS */
 
 .image-preview-input {
@@ -43,6 +48,18 @@ a:hover{
 }
 .image-preview-input-title {
     margin-left:2px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #FEB41C;
+    border-radius: 0;
+    border-color: #FEB41C;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #FEB41C;
+    border-color: #FEB41C;
 }
 
 /* HEADER */
@@ -876,5 +893,28 @@ body .category .last-projects .img-project {
 .daterangepicker .calendar {
 	display: none !important;
 }
+
+/* LOGIN */
+.login .panel-heading {
+	background-color: #FEB41C;
+	border-color: #FEB41C;
+	color:#fff;
+	text-transform: uppercase;
+}
+
+.login .panel-default {
+	border-color: #FEB41C;
+	border-radius:0;
+}
+
+.login .panel-default .form-control,
+.login .panel-default .form-control {
+	background-color: rgba(94, 124, 136, .2) !important;
+	border-radius: 0;
+	color: #FEB41C;
+}
+
+
+
 
 

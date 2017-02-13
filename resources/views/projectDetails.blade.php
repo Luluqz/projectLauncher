@@ -56,7 +56,7 @@
                 <li role="presentation" class="col-md-3"><a href="#commentaires" aria-controls="commentaires" role="tab" data-toggle="tab"><i class="fa fa-comments-o" aria-hidden="true"></i> commentaires</a></li>
                 <li role="" class="col-md-3 social-media">
                     <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> </a>
-                    <a href=""><i class="fa fa-google-plus" aria-hidden="true"></i> </a>
+                    <a href=""><i class="fa fa-google-plus-square" aria-hidden="true"></i> </a>
                     <a href=""><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                 </li>
             </ul>
@@ -98,7 +98,7 @@
                                     <td>
                                         
                                         {{ \Carbon\Carbon::setLocale('fr') }}
-                                        {{ $contract->created_at->diffForHumans() }} le {{ $contract->created_at->toFormattedDateString() }}
+                                        {{ $contract->created_at->diffForHumans() }}, le {{ $contract->created_at->format('d\\/m\\/Y') }}
 
                                     </td>
                                 </tr>
