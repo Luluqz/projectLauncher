@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="{{ URL::asset('assets/css/categories.css') }}" type='text/css' rel="stylesheet">
     <link href="{{ URL::asset('assets/css/style.css') }}" type='text/css' rel="stylesheet">
 
     @stack('css-stack')
@@ -45,7 +46,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar  -->
                 <ul class="nav navbar-nav">
-                    <li><a href="#last-projects">Découvrir</a></li>
+                    <li><a id="trigger-overlay">Découvrir</a></li>
                     <li><a href="{{ url('/home/create') }}">Démarrer un projet</a></li>
                 </ul>
 
@@ -77,6 +78,17 @@
         </div>
     </nav>
 
+    <div class="overlay overlay-slidedown">
+        <button type="button" class="overlay-close">Close</button>
+        <nav>
+            <ul>
+                @foreach ($categories as $cat)
+                    <li>{!! link_to_route('category', $cat->name, ['id' => $cat->id]) !!}</li>
+                @endforeach
+            </ul>
+        </nav>
+    </div>
+
     @yield('content')
 
     <footer>
@@ -92,7 +104,11 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    @stack('js-stack')
+    
+    <script src="{{ URL::asset('assets/js/modernizr.custom.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/classie.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/categories.js') }}"></script>
     <script src="{{ URL::asset('assets/js/main.js') }}"></script>
+    @stack('js-stack')
 </body>
 </html>

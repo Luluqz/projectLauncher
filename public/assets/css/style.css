@@ -1,6 +1,6 @@
 /* GLOBAL */
 
-/*jaune: #FEB41C*/
+/*jaune: #FEB41C  rgba(254, 180, 28, 1)  */
 /*gris-main:#363F45*/
 /*light-blue:#5E7C88*/
 /*light-blue-opac: rgba(94, 124, 136, 1);*/
@@ -406,6 +406,11 @@ a:hover{
 
 /* latests projects */
 
+#load {
+	float: left;
+	margin-bottom: 25px;
+}
+
 .last-projects .img-project {
 	height: 160px;
 	position: relative;
@@ -519,6 +524,30 @@ a:hover{
 	box-shadow: 5px 5px 15px rgba(94, 124, 136, .3);
 	margin-bottom: 30px;
 } 
+
+/* pagi */
+
+.last-projects .pagination {
+	display: block;
+	margin: 30px auto;
+	text-align: center;
+	clear: both;
+}
+
+.last-projects .pagination li span,
+.last-projects .pagination li a {
+	float: none;
+}
+
+.last-projects .pagination .active span {
+	background-color: #FEB41C;
+	color:#fff;
+	border-color: #FEB41C;
+}
+
+.last-projects .pagination li a {
+	color:#363F45;
+}
 
 /* CATEGORY */
 .category h2 {
@@ -900,6 +929,7 @@ body .category .last-projects .img-project {
 	border-color: #FEB41C;
 	color:#fff;
 	text-transform: uppercase;
+	border-radius: 0;
 }
 
 .login .panel-default {
@@ -909,9 +939,9 @@ body .category .last-projects .img-project {
 
 .login .panel-default .form-control,
 .login .panel-default .form-control {
-	background-color: rgba(94, 124, 136, .2) !important;
+/*	background-color: rgba(94, 124, 136, .2) !important;
 	border-radius: 0;
-	color: #FEB41C;
+	color: #FEB41C;*/
 }
 
 

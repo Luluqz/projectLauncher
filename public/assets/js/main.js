@@ -15,6 +15,12 @@ $(document).ready(function() {
         $(".image-preview-input-title").text("Browse"); 
     }); 
 
+    $(".last-projects pagination a").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#load").offset().top
+        }, 2000);
+    });
+
     // $('.homeSlider').slick({
     //     prevArrow : '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
     //     nextArrow : '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',

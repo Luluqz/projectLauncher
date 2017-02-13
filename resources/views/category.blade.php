@@ -88,7 +88,6 @@
 @endsection
 
 @push('js-stack')
-<script src="{{ URL::asset('assets/js/classie.js') }}"></script>
 <script src="{{ URL::asset('assets/js/selectFx.js') }}"></script>
 <script>
     (function() {

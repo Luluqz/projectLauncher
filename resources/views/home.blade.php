@@ -131,6 +131,11 @@ $(function() {
         var url = $(this).attr('href');  
         getProjects(url);
         window.history.pushState("", "", url);
+
+        $('html, body').animate({
+            scrollTop: $("#load").offset().top
+        }, 500);
+
     });
 
     function getProjects(url) {
@@ -146,6 +151,7 @@ $(function() {
 });
 
 </script>
+@push('js-stack')
 @endpush
 
 @push('css-stack')

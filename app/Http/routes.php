@@ -26,6 +26,6 @@ Route::get('/home/project/{project_id}','ProjectDetailsController@index')->name(
 Route::post('/home/create/addProject', 'CreateController@addProject');
 Route::get('/home/create', 'CreateController@index');
 
-Route::get('/home/category/{category_id}', 'HomeController@category');
+Route::get('/home/category/{category_id}', 'HomeController@category')->name('category');
 
 
