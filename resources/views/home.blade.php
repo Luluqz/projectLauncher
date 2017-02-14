@@ -151,7 +151,6 @@ $(function() {
 });
 
 </script>
-@push('js-stack')
 @endpush
 
 @push('css-stack')

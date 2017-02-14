@@ -13,10 +13,17 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    @stack('css-stack')
     <link href="{{ URL::asset('assets/css/categories.css') }}" type='text/css' rel="stylesheet">
     <link href="{{ URL::asset('assets/css/style.css') }}" type='text/css' rel="stylesheet">
 
-    @stack('css-stack')
+
+    <!-- Javascripts -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous">      
+    </script>
 
     <style>
         body {
@@ -82,7 +89,7 @@
         <button type="button" class="overlay-close">Close</button>
         <nav>
             <ul>
-                @foreach ($categories as $cat)
+                @foreach ($default_categories as $cat)
                     <li>{!! link_to_route('category', $cat->name, ['id' => $cat->id]) !!}</li>
                 @endforeach
             </ul>
@@ -102,13 +109,12 @@
     </footer>
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     
     <script src="{{ URL::asset('assets/js/modernizr.custom.js') }}"></script>
     <script src="{{ URL::asset('assets/js/classie.js') }}"></script>
     <script src="{{ URL::asset('assets/js/categories.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
     @stack('js-stack')
+    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
 </body>
 </html>

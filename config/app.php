@@ -161,6 +161,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Conner\Tagging\Providers\TaggingServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
 
     ],
 
