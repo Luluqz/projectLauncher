@@ -23,7 +23,7 @@
             {{ $daysLeft }}
         </div>
         <div class="col-md-3 link">
-            <a href="">Financer le projet</a>
+            <a href="" data-toggle="modal" data-target="#modal-financement">Financer le projet</a>
         </div>
     </div>
     <div class="row">
@@ -40,7 +40,11 @@
     </div>
     <div class="row visuel">
         <div class="col-md-8">
-            <div class="img-project" style="background-image:url('http://lorempixel.com/900/600/')"></div>
+            <div class="img-project" style="background-image:url('http://lorempixel.com/900/600/')">
+                @if ($project->toTop == 1)
+                <div class="ribbon"><span>TOP</span></div>
+                @endif
+            </div>
         </div>
         <div class="col-md-4 desc">
             <h4><span>En bref</span></h4>
@@ -112,6 +116,51 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-financement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="myModalLabel">{{ $project->title }}</h3>
+          </div>
+          <div class="modal-body">
+            @if (Auth::guest())
+                <p>Vous devez être connecté pour pouvoir financer un projet</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            @elseif (Auth::user()->role == 1 )
+                Vous devez posséder un compte Financeur pour contribuer à ce projet.
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+              </div>
+            @else
+                Vous souhaitez contribuer à ce projet à hauteur de : <br><br>
+                {!! Form::open(['route' => 'addContract']) !!}
+
+                    {{ Form::hidden('project_id', $project->id) }}
+                    {{ Form::hidden('investor_id', Auth::user()->id) }}
+
+                    {!! Form::number('amount', '', ['class' => 'form-control']) !!}
+                    <i class="fa fa-eur" aria-hidden="true"></i>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        {{ Form::submit('Contribuer', array('class' => 'btn btn-primary')) }}
+                    </div>
+
+                {!! Form::close() !!}
+            @endif
+          
+        </div>
+      </div>
+    </div>
+
 </div>
 
 @endsection

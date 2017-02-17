@@ -81,10 +81,10 @@ class ProjectsSeeder extends Seeder
         ]);
 
         $projects = [];
-        for($i=0; $i < 80; $i++){
+        for($i=0; $i < 140; $i++){
             $projects[$i] = [
                 'created_at' => $faker->dateTimeBetween($startDate = 'now', $endDate = 'now'),
-                'creator_id' => rand(1,45),
+                'creator_id' => rand(1,75),
                 'title' => $faker->text($maxNbChars = 40),
                 'category_id' => rand(1,15),
                 'tag_id' => rand(1,10),

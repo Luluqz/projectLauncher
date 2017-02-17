@@ -36,12 +36,12 @@ class ContractsSeeder extends Seeder
         ]);
 
         $contracts = [];
-        for($i=0; $i < 500; $i++){
+        for($i=0; $i < 650; $i++){
             $contracts[$i] = [
                 'created_at' => $faker->dateTimeBetween($startDate = '-2 month', $endDate = 'now'),
-                'investor_id' => rand(55,340),
-                'project_id' => rand(6,85),
-                'amount' => rand(100,6950),             
+                'investor_id' => rand(85,440),
+                'project_id' => rand(6,125),
+                'amount' => rand(100,7050),             
             ];
         }
 

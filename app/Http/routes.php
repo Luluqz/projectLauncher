@@ -16,16 +16,17 @@
 // });
 
 Route::auth();
+Route::get('/home/account', 'HomeController@account')->name('account');
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::resource('/home', 'HomeController');
 
 Route::get('/home/project/{project_id}','ProjectDetailsController@index')->name('projectdetails');
+Route::post('/home/addContract', 'ProjectDetailsController@addContract')->name('addContract');
 
 Route::post('/home/create/addProject', 'CreateController@addProject');
 Route::get('/home/create', 'CreateController@index');
 
 Route::get('/home/category/{category_id}', 'HomeController@category')->name('category');
-
 

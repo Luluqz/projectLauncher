@@ -73,7 +73,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $creators = [];
-        for($i=0; $i < 50; $i++){
+        for($i=0; $i < 80; $i++){
             $creators[$i] = [
                 'name' => $faker->lastName(),
                 'firstname' => $faker->firstName(),
@@ -90,7 +90,7 @@ class UsersTableSeeder extends Seeder
         }
 
         $investors = [];
-        for($i=0; $i < 300; $i++){
+        for($i=0; $i < 400; $i++){
             $investors[$i] = [
                 'name' => $faker->lastName(),
                 'firstname' => $faker->firstName(),

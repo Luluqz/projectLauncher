@@ -1,8 +1,9 @@
 /* Overlay style */
 .overlay {
-	position: fixed;
+	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: auto;
+	min-height: 100%;
 	top: 0;
 	left: 0;
 	background: rgba(254, 180, 28, .9);
@@ -29,7 +30,6 @@
 .overlay nav {
 	text-align: center;
 	position: relative;
-	margin-top: 100px;
 }
 
 .overlay ul {
@@ -39,18 +39,19 @@
 	display: inline-block;
 	height: 100%;
 	position: relative;
+	margin-top: 70px;
 }
 
 .overlay ul li {
 	display: block;
-	height: 6.66%
+	height: 6.66%;
 	height: calc(100% / 15);
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
 
 .overlay ul li a {
-	font-size: 32px;
+	font-size: 26px;
 	font-weight: 300;
 	display: block;
 	color: #fff;

@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container">
+
+    @if(Session::has('message'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">{{ Session::get('message') }}</div>
+        </div>
+    </div>
+    @endif
+
     <div class="row homeSlider">
         <div class="col-md-12 slide">
             <div class="content">
@@ -41,7 +50,7 @@
                             <div class="author">par <i class="fa fa-user" aria-hidden="true"></i> {{ $topUser[$k]->firstname }} {{ $topUser[$k]->name }}</div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')"></div>
+                                    <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')"><div class="ribbon"><span>TOP</span></div></div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="desc">

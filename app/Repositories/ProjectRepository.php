@@ -44,4 +44,10 @@ class ProjectRepository
     			['toTop', '1'],
     		])->inRandomOrder()->first();   	
     }
+
+    public function getUserProjects($user_id)
+    {
+        return Project::where('creator_id', $user_id)->get();
+    }
+
 }

@@ -184,4 +184,44 @@ class HomeController extends Controller
 
             ]);
     }
+
+    public function account(Request $request)
+    {
+        $user = Auth::user();
+        $projects = $this->project->getUserProjects($user->id);
+
+        foreach($projects as $key => $project){
+
+             // get currentAmount
+             $currentAmount[$key] = $this->contract->getCurrentAmount($project->id);
+
+             //get percentage
+            if(!is_null($currentAmount[$key])){
+                if($project->project_cost > $currentAmount[$key]){
+                    $perc[$key] = ($currentAmount[$key] / $project->project_cost)*100;
+                }else{
+                    $perc[$key] = 100;
+                }
+            }else{
+                $perc[$key] = 0;
+            }
+
+            $project_contrats[$key] = $this->contract->getContracts($project->id);
+
+            foreach ($project_contrats[$key] as $k => $c) {
+                $investors[$key][$k] = $this->contract->getInvestors($c->investor_id);
+            }
+        }
+
+        // dd($investors);
+
+        return view('account', [
+            'user' => $user,
+            'projects' => $projects,
+            'currentAmount' => $currentAmount,
+            'perc' => $perc,
+            'project_contracts' => $project_contrats,
+            'investors' => $investors,
+            ]);
+    }
 }

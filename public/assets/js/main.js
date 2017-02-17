@@ -21,25 +21,8 @@ $(document).ready(function() {
         }, 2000);
     });
 
-    // $('.homeSlider').slick({
-    //     prevArrow : '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-    //     nextArrow : '<button type="button" class="slick-next"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-    // });
-
-    // $('.catSlider').slick({
-    //     dots: true,
-    //     appendDots: $(".dots-container"),
-    //     vertical: true,
-    //     arrows:false,
-    //     customPaging : function(slider, i) {
-    //         var thumb = $(slider.$slides[i]).data('thumb');  
-    //         return '<a>'+thumb+'</a>';
-    //     },
-    // });
-
-    // $('.dots-container li').on('click', function(){
-    //     $('.dots-container li').removeClass('active');
-    //     $(this).addClass('active');
-    // });
+    $('#trigger-overlay').click(function(){
+        $('body').toggleClass('overlay-open');
+    });
 });
 
