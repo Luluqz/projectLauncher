@@ -67,6 +67,19 @@ body.overlay-open {
     border-color: #FEB41C;
 }
 
+.activities .btn-primary {
+    color: #fff;
+    background-color: #5E7C88;
+    border-color: #5E7C88;
+    margin-bottom: 6px;
+}
+.activities .btn-primary:hover,
+.activities .btn-primary:focus {
+    color: #fff;
+    background-color: #5E7C88;
+    border-color: #5E7C88;
+}
+
 /* HEADER */
 
 /* menu */
@@ -970,6 +983,67 @@ body .category .last-projects .img-project {
 /*	background-color: rgba(94, 124, 136, .2) !important;
 	border-radius: 0;
 	color: #FEB41C;*/
+}
+
+.note-toolbar .note-insert .note-btn:nth-of-type(2){
+	display: none;
+}
+
+.createProject .jumbotron {
+	color:#fff;
+	background-color: #363F45;
+}
+
+.createProject .btn-info {
+	background-color: #FEB41C;
+	border-color: #FEA714;
+	margin-bottom: 4px;
+}
+
+.createProject .btn-info:focus,
+.createProject .btn-info:hover {
+	background-color: #FEA714;
+	border-color: #FEB41C;
+}
+
+.createProject .btn-info.active {
+	background-color: #FE8424;
+}
+
+.createProject .btn-success,
+.createProject .btn-success:hover,
+.createProject .btn-success:focus,
+.createProject .btn-success:active,
+.createProject .btn-success.active,
+.createProject .btn-success:visited {
+	background-color: #FEB41C;
+	border-color: #FEB41C;
+}
+
+#modal-editProject .btn-primary,
+#modal-editProject .btn-primary:hover,
+#modal-editProject .btn-primary:focus,
+#modal-editProject .btn-primary:active,
+#modal-editProject .btn-primary.active,
+#modal-editProject .btn-primary:visited {
+	background-color: #FEB41C;
+	border-color: #FEB41C;
+}
+
+#modal-editProject .description {
+	width: 100%;
+	resize: none;
+}
+
+.account #accordion .panel-default {
+	margin-bottom: 3px;
+}
+.account #accordion .panel-default:last-child {
+	margin-bottom: 0px;
+}
+
+.createProject .ranges li {
+	color: #FEB41C;
 }
 
 /* ACCOUNT */

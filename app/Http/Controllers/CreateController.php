@@ -63,7 +63,7 @@ class CreateController extends Controller
         $destinationPath = base_path() . '/public/uploads/img/';
         $Request->file('input-file-preview')->move($destinationPath , $imageName);
 
-        Session::flash('message', 'Project uploaded');
+        Session::flash('message', 'Projet crée ! Merci de votre participation.');
         return Redirect::to('/home/create');
     }
 }

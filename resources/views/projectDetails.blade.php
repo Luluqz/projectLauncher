@@ -88,6 +88,7 @@
                                     <th>Date</th>
                                 </tr>
                             </thead>
+                            @if (!is_null($listContracts))
                             <tbody>
                                 @foreach ($listContracts as $key => $contract)
                                 <tr>
@@ -108,6 +109,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            @endif
                         </table>
                     </div>
                 </div>

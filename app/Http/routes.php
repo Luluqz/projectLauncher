@@ -17,6 +17,9 @@
 
 Route::auth();
 Route::get('/home/account', 'HomeController@account')->name('account');
+Route::post('/home/modifAccount', 'HomeController@modifAccount');
+Route::post('/home/modifProject', 'HomeController@modifProject')->name('modifProject');
+Route::post('/home/modifTop', 'HomeController@modifTop')->name('modifTop');
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');

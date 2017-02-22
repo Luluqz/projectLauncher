@@ -57,10 +57,17 @@ class ProjectDetailsController extends Controller
         //get contracts
         $listContract = $this->contract->getContracts($project_id);
 
-       
-        foreach($listContract as $key => $contract){
-             // get investors id
-             $investors[$key] = $this->contract->getInvestors($contract->investor_id);
+        if (!is_null($listContract)){
+            foreach($listContract as $key => $contract){
+                 // get investors id
+                 $investors[$key] = $this->contract->getInvestors($contract->investor_id);
+            }
+        }else {
+            $investors = '';
+        }
+
+        if (empty($investors)){
+            $investors = [];
         }
 
         //days left

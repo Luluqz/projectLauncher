@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container login account">
+
+    @if(Session::has('message'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">{{ Session::get('message') }}</div>
+        </div>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <h1><span>Mon Compte</span></h1>
@@ -10,8 +19,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Mon profil</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/home/modifAccount') }}">
                         {{ csrf_field() }}
+                        {{ Form::hidden('user_id', $user->id , array('id' => 'user_id')) }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nom</label>
@@ -131,6 +141,64 @@
                         <h3>Mes Projets</h3>
                         <div class="panel-group" id="accordion" role="tablist">
                             @foreach ($projects as $k => $project)
+
+<!-- Modal -->
+<div class="modal fade" id="modal-editProject{{ $project->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">{{ $project->title }}</h3>
+            </div>
+            <div class="modal-body">
+                Vous souhaitez contribuer à ce projet à hauteur de : <br><br>
+                {!! Form::open(['route' => 'modifProject']) !!}
+
+                {{ Form::hidden('project_id', $project->id) }}
+                {{ Form::textarea('description', $project->description, ['class' => 'description']) }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                {{ Form::submit('Editer', array('class' => 'btn btn-primary')) }}
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-editTop{{ $project->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">{{ $project->title }}</h3>
+            </div>
+            <div class="modal-body">
+                @if ($project->toTop == 0)
+                    Vous souhaitez mettre votre projet en avant ? <br>
+                    Pour 10euros, vous avez la possibilité de mettre en avant votre projet sur le site LauncherProject<br><br>
+                    {!! Form::open(['route' => 'modifTop']) !!}
+
+                    {{ Form::hidden('project_id', $project->id) }}
+                    {{ Form::hidden('toTop', '1') }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    {{ Form::submit('Payer', array('class' => 'btn btn-primary')) }}
+                </div>
+                {!! Form::close() !!}
+                @else
+                    Votre projet est déjà mis en avant !
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    {{ Form::submit('Payer', array('class' => 'btn btn-primary')) }}
+                </div>
+                @endif
+        </div>
+    </div>
+</div>
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="heading-{{ $project->id }}">
                                     <h4 class="panel-title">
@@ -141,30 +209,91 @@
                                 </div>
                                 <div class="panel-collapse collapse" id="collapse-{{ $project->id }}" role="tabpanel" aria-labelledby="heading-{{ $project->id }}">
                                     <div class="panel-body">
-                                        <div class="prog">
-                                            Avancement : 
+                                        <div class="investors">
+                                            <table class="table table-hover table-{{ $project->id }}">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Investisseur</th>
+                                                        <th>Montant</th>
+                                                        <th>Email</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($project_contracts[$k] as $key => $c)
+                                                    <tr>
+                                                        <td><?php echo $investors[$k][$key]->firstname; ?> <?php echo $investors[$k][$key]->name; ?></td>
+                                                        <td>{{ $c->amount }}€</td>
+                                                        <td><?php echo $investors[$k][$key]->email; ?></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="prog jumbotron">
                                             @if(!is_null($currentAmount[$k]))
-                                                {{ $currentAmount[$k] }}€ récoltés sur {{ $project->project_cost }}€
+                                                <table class="table-hover text-center" style="width:100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center">Total</th>
+                                                            <th class="text-center">Objectif final</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{ $currentAmount[$k] }}€</td>
+                                                            <td>{{ $project->project_cost }}€</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             @else
                                                 Pas de financement pour l'instant
                                             @endif
                                         </div>
-                                        <div class="investors">
-                                            @foreach($project_contracts[$k] as $c)
-                                                {{ $c->amount }}
-                                            @endforeach
+                                        <div class="">
+                                            <div class="col-md-6 text-center">
+                                                {!! link_to_route('projectdetails', 'Voir le projet', ['id' => $project->id], ['class' => 'btn btn-primary']) !!}
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modal-editProject{{ $project->id }}">Editer le projet</a>
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modal-editTop{{ $project->id }}">Mettre en avant</a>
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <a href="" class="btn btn-primary btn-export{{ $project->id }}">Exporter les données</a>
+
+
+<script>
+    $(".btn-export{{ $project->id }}").click(function(){
+      $(".table-{{ $project->id }}").table2excel({
+        // exclude CSS class
+        exclude: ".noExl",
+        name: "Worksheet Name",
+        filename: "SomeFile" //do not include extension
+      }); 
+    });
+</script>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
                         </div>
-
                     @endif
                 </div>
             </div>
         </div>
-
     </div>
+
+
 </div>
+
+@push('js-stack')
+    <script src="{{ URL::asset('assets/js/jquery.table2excel.min.js') }}"></script>
+@endpush
+
 @endsection

@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\User;
 use Auth;
+Use Input;
+Use Session;
+Use Redirect;
 use App\Http\Controllers\Controller;
 use App\Repositories\ProjectRepository;
 use App\Repositories\UserRepository;
@@ -206,22 +209,71 @@ class HomeController extends Controller
                 $perc[$key] = 0;
             }
 
-            $project_contrats[$key] = $this->contract->getContracts($project->id);
+            $project_contracts[$key] = $this->contract->getContracts($project->id);
 
-            foreach ($project_contrats[$key] as $k => $c) {
-                $investors[$key][$k] = $this->contract->getInvestors($c->investor_id);
+            if(!is_null($project_contracts[$key])){
+                foreach ($project_contracts[$key] as $k => $c) {
+                    $investors[$key][$k] = $this->contract->getInvestors($c->investor_id);
+                }
             }
         }
-
-        // dd($investors);
 
         return view('account', [
             'user' => $user,
             'projects' => $projects,
             'currentAmount' => $currentAmount,
             'perc' => $perc,
-            'project_contracts' => $project_contrats,
+            'project_contracts' => $project_contracts,
             'investors' => $investors,
             ]);
     }
+
+    public function modifAccount(Request $request)
+    {
+
+        $user_id = Input::get('user_id');
+        $modif = User::find($user_id);
+        $modif->name = Input::get('name');
+        $modif->firstname = Input::get('firstname');
+        $modif->email = Input::get('email');
+        $modif->city = Input::get('city');
+        $modif->CP = Input::get('CP');
+        $modif->address = Input::get('address');
+        $modif->phone = Input::get('phone');
+
+        $modif->save();
+
+        Session::flash('message', 'Profil modifié avec succès');
+        return Redirect::to('/home/account');
+
+    }
+
+    public function modifProject(Request $request)
+    {
+
+        $project_id = Input::get('project_id');
+        $modif = Project::find($project_id);
+        $modif->description = Input::get('description');
+
+        $modif->save();
+
+        Session::flash('message', 'Projet modifié avec succès');
+        return Redirect::to('/home/account');
+
+    }
+
+    public function modifTop(Request $request)
+    {
+
+        $project_id = Input::get('project_id');
+        $modif = Project::find($project_id);
+        $modif->toTop = Input::get('toTop');
+
+        $modif->save();
+
+        Session::flash('message', 'Projet mis en avant avec succès');
+        return Redirect::to('/home/account');
+
+    }
 }
+
