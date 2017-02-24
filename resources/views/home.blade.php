@@ -16,7 +16,7 @@
             <div class="content">
                 <strong>PROJECT LAUNCHER</strong>, la plateforme communautaire de<br>
                 financement participatif qui va faire décoller vos projets !
-                <a class="" href="">Démarrer un projet</a>
+                <a class="" href="{{ url('/home/create') }}">Démarrer un projet</a>
             </div>
         </div>
         <div class="col-md-12 slide">
@@ -49,10 +49,10 @@
 
                             <div class="author">par <i class="fa fa-user" aria-hidden="true"></i> {{ $topUser[$k]->firstname }} {{ $topUser[$k]->name }}</div>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')"><div class="ribbon"><span>TOP</span></div></div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-md-6">
                                     <div class="desc">
                                         {{ str_limit($topHome[$k]->description, 450) }}
                                     </div>

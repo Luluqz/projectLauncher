@@ -54,7 +54,7 @@ class CreateController extends Controller
         $project->description = Input::get('desc');
         $project->project_cost = Input::get('cost');
         $project->project_endline = Input::get('end');
-        $project->category_id = Input::get('category_id');
+        $project->category_id = Input::get('category');
         $project->img_path = $imageName;
 
         $project->save();

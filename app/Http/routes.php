@@ -33,3 +33,5 @@ Route::get('/home/create', 'CreateController@index');
 
 Route::get('/home/category/{category_id}', 'HomeController@category')->name('category');
 
+Route::resource('/home/queries', 'HomeController@queries');
+

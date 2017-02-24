@@ -48,7 +48,7 @@
         </div>
         <div class="col-md-4 desc">
             <h4><span>En bref</span></h4>
-            <p>{{ str_limit($project->description, 350) }}</p>
+            <p>{!! str_limit($project->description, 350) !!}</p>
         </div>
     </div>
     <div class="row onglets">
@@ -73,7 +73,7 @@
                         <div class="col-md-6 col-md-offset-3">
                             <div class="img-project" style="background-image:url('http://lorempixel.com/600/400/')"></div>
                             <div class="desc">
-                                {{ $project->description }}
+                                {!! $project->description !!}
                             </div>
                         </div>
                     </div>

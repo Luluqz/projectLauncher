@@ -40,6 +40,10 @@
         <div class="container">
             <div class="navbar-header">
 
+                <a class="navbar-resp" href="{{ url('/') }}">
+                    <img src="{{ URL::asset('assets/img/logo-header.png') }}" alt="">
+                </a>
+
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
@@ -64,6 +68,18 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+
+                    <form class="navbar-form navbar-left" role="form" action="">
+                        <div class="form-group">
+                        {!! Form::text('search', null,
+                                               array('required',
+                                                    'class'=>'form-control',
+                                                    'placeholder'=>'Chercher un projet...')) !!}
+                        </div>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Connexion</a></li>
@@ -102,9 +118,47 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
+                <div class="col-md-3 col-sm-4">
+                    <h4><i class="fa fa-flag" aria-hidden="true"></i>  <span> CATAGORIES</span></h4>
+                    <ul>
+                        <li><a href="{{ url('/home/category/1') }}">ART</a></li>
+                        <li><a href="{{ url('/home/category/2') }}">BD</a></li>
+                        <li><a href="{{ url('/home/category/3') }}">Artisanat</a></li>
+                        <li><a href="{{ url('/home/category/4') }}">Danse</a></li>
+                        <li><a href="{{ url('/home/category/5') }}">Design</a></li>
+                        <li><a href="{{ url('/home/category/6') }}">Mode</a></li>
+                        <li><a href="{{ url('/home/category/7') }}">Cinéma et vidéo</a></li>
+                        <li><a href="{{ url('/home/category/8') }}">Gastronomie</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <h4 style="color:#FEB41C;"><span style="border-color:#FEB41C;">CATEGORIES</span></h4>
+                    <ul>
+                        <li><a href="{{ url('/home/category/9') }}">Jeux</a></li>
+                        <li><a href="{{ url('/home/category/10') }}">Journalisme</a></li>
+                        <li><a href="{{ url('/home/category/11') }}">Musique</a></li>
+                        <li><a href="{{ url('/home/category/12') }}">Photographie</a></li>
+                        <li><a href="{{ url('/home/category/13') }}">Edition</a></li>
+                        <li><a href="{{ url('/home/category/14') }}">Technologie</a></li>
+                        <li><a href="{{ url('/home/category/15') }}">Théâtre</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <h4><i class="fa fa-bars" aria-hidden="true"></i>  <span>  LIENS DE MENU</span></h4>
+                    <ul>
+                        <li><a href="{{ url('/login') }}">Connexion</a></li>
+                        <li><a href="{{ url('/register') }}">Inscription</a></li>
+                        <li><a href="">Découvrir</a></li>
+                        <li><a href="{{ url('/home/create') }}">Démarrer un projet</a></li>
+                        <li><a href="">CGU</a></li>
+                        <li><a href="">Mentions légales</a></li>
+                        <li><a href="">Page Facebook</a></li>
+                        <li><a href="">Instragram</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <img src="{{ URL::asset('assets/img/logo-PL-white.png') }}" alt="">
+                </div>
             </div>
         </div>
     </footer>
